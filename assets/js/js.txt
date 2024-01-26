@@ -1,0 +1,252 @@
+/*=============== SEARCH SHOW===============*/
+const searchButton = document.getElementById("seach-button");
+const searchClose = document.getElementById("search-close");
+const searchContent = document.getElementById("search-content");
+
+
+/*=============== SEARCH SHOW ===============*/
+if (searchButton) {
+    searchButton.addEventListener("click", () => {
+        searchContent.classList.add("show-search");
+    });
+}
+
+
+/*=============== SEARCH HIDDEN ===============*/
+if (searchClose) {
+    searchClose.addEventListener("click", () => {
+        searchContent.classList.remove("show-search");
+    });
+}
+
+
+Đoạn mã JavaScript này thực hiện một số thao tác khi người dùng tương tác với ô tìm kiếm trên trang web. Dưới đây là giải thích chi tiết:
+
+1. `const searchButton = document.getElementById("seach-button");`, `const searchClose = document.getElementById("search-close");`, `const searchContent = document.getElementById("search-content");`:
+   - Lấy tham chiếu đến các phần tử DOM trong HTML với các `id` tương ứng là 
+   "search-button", "search-close", và "search-content".
+
+2. `if (searchButton) { ... }`:
+   - Kiểm tra xem phần tử với `id` là "search-button" có tồn tại không.
+   - Nếu có, thì thêm một sự kiện "click" lên phần tử đó.
+
+3. `searchButton.addEventListener("click", () => { ... });`:
+   - Gắn một sự kiện "click" vào phần tử "search-button".
+   - Khi người dùng click vào nút tìm kiếm, một hàm được gọi, và hàm này thêm class "show-search" vào phần tử "search-content".
+
+4. `if (searchClose) { ... }`:
+   - Kiểm tra xem phần tử với `id` là "search-close" có tồn tại không.
+   - Nếu có, thì thêm một sự kiện "click" lên phần tử đó.
+
+5. `searchClose.addEventListener("click", () => { ... });`:
+   - Gắn một sự kiện "click" vào phần tử "search-close".
+   - Khi người dùng click vào nút đóng, một hàm được gọi, và hàm này loại bỏ class "show-search" khỏi phần tử "search-content".
+
+Với cách này, khi người dùng click vào nút tìm kiếm, class "show-search" sẽ được thêm vào phần tử "search-content", làm cho ô tìm kiếm hiển thị. Ngược lại, khi người dùng click vào nút đóng, class này sẽ được loại bỏ, làm ẩn ô tìm kiếm.
+
+/*=============== ADD SHADOW HEADER ===============*/
+const shadowHeader = () => {
+    const header = document.getElementById("header");
+
+    // When the scroll is reater than 50 viewport height,add the scroll-header class to the header tag
+    this.scrollY >= 50
+        ? header.classList.add("shadow-header")
+        : header.classList.remove("shadow-header");
+};
+
+window.addEventListener('scroll', shadowHeader);
+Đoạn mã JavaScript này thực hiện việc thêm hoặc loại bỏ một lớp (class) từ phần tử header của trang dựa trên vị trí cuộn của trang. Dưới đây là giải thích chi tiết:
+
+1. `const header = document.getElementById("header");`:
+   - Lấy tham chiếu đến phần tử header trong HTML với `id` là "header".
+
+2. `const shadowHeader = () => { ... }`:
+   - Định nghĩa hàm `shadowHeader` để kiểm tra vị trí cuộn và thêm hoặc loại bỏ class "shadow-header" cho phần tử header.
+
+3. `this.scrollY >= 50 ? header.classList.add("shadow-header") : header.classList.remove("shadow-header");`:
+   - Kiểm tra nếu giá trị của thuộc tính `scrollY` trên cửa sổ (window) lớn hơn hoặc bằng 50 pixels.
+   - Nếu điều kiện đúng, thì thêm class "shadow-header" vào phần tử header.
+   - Ngược lại, nếu điều kiện sai, loại bỏ class "shadow-header" khỏi phần tử header.
+
+4. `window.addEventListener('scroll', shadowHeader);`:
+   - Gắn một sự kiện "scroll" lên cửa sổ (window) để gọi hàm `shadowHeader` mỗi khi trang được cuộn. Điều này giúp cập nhật trạng thái của header dựa trên vị trí cuộn của trang.
+
+Với cách này, khi người dùng cuộn trang và vị trí cuộn vượt qua 50 pixels, class "shadow-header" sẽ được thêm vào phần tử header. Ngược lại, nếu vị trí cuộn nhỏ hơn 50 pixels, class này sẽ được loại bỏ, giúp thay đổi giao diện của header tùy thuộc vào vị trí cuộn.
+/*=============== TESTIMONIAL SWIPER ===============*/
+let swiperTestimonial = new Swiper('.testimonial__swiper', {
+    loop: true,
+    spaceBetween: 16,
+    grabCursor: true,
+    centeredSlides: 'auto',
+    slidesPerView: 'auto',
+
+    breakpoints: {
+        1150: {
+            slidesPerView: 3,
+            centeredSlides: false,
+        }
+    }
+});
+
+Mã này sử dụng thư viện Swiper để tạo một carousel (để chuyển động qua các phần tử) trong một phần của trang web, có vẻ là cho hiển thị các đánh giá hoặc testimonial (phản hồi) từ người dùng. Dưới đây là giải thích các tùy chọn được sử dụng trong khối cấu hình của `Swiper`:
+
+1. `new Swiper('.testimonial__swiper', { ... })`:
+   - Tạo một đối tượng Swiper và liên kết nó với phần tử có lớp CSS là "testimonial__swiper".
+
+2. `loop: true,`:
+   - Cho phép vòng lặp, nghĩa là khi bạn chuyển đến phần tử cuối cùng, nó sẽ quay lại phần tử đầu tiên và ngược lại.
+
+3. `spaceBetween: 16,`:
+   - Xác định khoảng cách giữa các phần tử trong carousel, ở đây là 16 pixels.
+
+4. `grabCursor: true,`:
+   - Khi rê chuột trên carousel, con trỏ sẽ biến thành dạng "grab" để chỉ ra khả năng kéo (drag).
+
+5. `centeredSlides: 'auto',`:
+   - Các phần tử trong carousel sẽ được căn giữa. Giá trị 'auto' có vẻ tự động chọn cách hiển thị dựa trên số lượng phần tử.
+
+6. `slidesPerView: 'auto',`:
+   - Số lượng phần tử hiển thị trên mỗi lần chuyển động của carousel được tự động điều chỉnh.
+
+7. `breakpoints: { 1150: { ... } }`:
+   - Định nghĩa các điểm dừng (breakpoints) dựa trên chiều rộng của màn hình. Ở đây, nếu chiều rộng màn hình là 1150 pixels trở lên, số lượng phần tử hiển thị trên mỗi lần chuyển động là 3 và không căn giữa các phần tử nữa (`centeredSlides: false`).
+
+/*=============== SHOW SCROLL UP ===============*/
+const scrollUp = () => {
+    const scrollUp = document.getElementById("scroll-up");
+  
+    this.scrollY >= 350
+      ? scrollUp.classList.add("show-scroll")
+      : scrollUp.classList.remove("show-scroll");
+  };
+  
+  window.addEventListener("scroll", scrollUp);
+  
+
+  Mã này có vẻ như liên quan đến việc hiển thị hoặc ẩn một nút cuộn lên (scroll up) dựa trên vị trí cuộn của trang. Dưới đây là giải thích chi tiết:
+
+1. `const scrollUp = () => { ... }`:
+   - Định nghĩa hàm `scrollUp` để kiểm tra vị trí cuộn và thêm hoặc loại bỏ class "show-scroll" cho phần tử có `id` là "scroll-up".
+
+2. `const scrollUp = document.getElementById("scroll-up");`:
+   - Lấy tham chiếu đến phần tử có `id` là "scroll-up". Điều này giả sử rằng có một phần tử với `id` là "scroll-up" trong HTML, có thể là một nút hoặc một phần tử khác.
+
+3. `this.scrollY >= 350 ? scrollUp.classList.add("show-scroll") : scrollUp.classList.remove("show-scroll");`:
+   - Kiểm tra nếu giá trị của thuộc tính `scrollY` trên cửa sổ (window) là lớn hơn hoặc bằng 350 pixels.
+   - Nếu điều kiện đúng, thì thêm class "show-scroll" vào phần tử "scroll-up" để hiển thị nút cuộn lên.
+   - Ngược lại, nếu điều kiện sai, loại bỏ class "show-scroll" để ẩn nút cuộn lên.
+
+4. `window.addEventListener("scroll", scrollUp);`:
+   - Gắn một sự kiện "scroll" lên cửa sổ (window) để gọi hàm `scrollUp` mỗi khi trang được cuộn. Điều này giúp cập nhật trạng thái của nút cuộn lên dựa trên vị trí cuộn của trang.
+
+/*=============== SCROLL SECTIONS ACTIVE LINK ===============*/
+// Truy cập vào tất cả section có id
+const sections = document.querySelectorAll("section[id]");
+
+const scrollActive = () => {
+  const scrollDown = window.pageY;
+
+  sections.forEach((current) => {
+    const sectionHeight = current.offsetHeight,
+      sectionTop = current.offsetTop - 58,
+      sectionId = current.getAttribute("id"),
+      sectionClass = document.querySelector(
+        ".nav__menu a[href*=" + sectionId + "]"
+      );
+
+    if (scrollDown > sectionTop && scrollY <= sectionTop + sectionHeight) {
+      sectionClass.classList.add("active-link");
+    } else {
+      sectionClass.classList.remove("active-link");
+    }
+  });
+};
+window.addEventListener('scroll', scrollActive);
+
+Đoạn mã trên có vẻ như liên quan đến việc theo dõi vị trí cuộn của trang và thêm hoặc loại bỏ class "active-link" cho các phần tử menu dựa trên vị trí hiện tại của trang. Dưới đây là giải thích chi tiết:
+
+1. `const sections = document.querySelectorAll("section[id]");`:
+   - Lấy tất cả các phần tử `<section>` trong trang có thuộc tính `id`. Điều này giả sử rằng mỗi phần tử `<section>` trong trang đều có một `id` đặc biệt.
+
+2. `const scrollActive = () => { ... }`:
+   - Định nghĩa hàm `scrollActive` để xác định các phần tử nào đang hiển thị trên màn hình và cập nhật trạng thái của menu dựa trên điều đó.
+
+3. `const scrollDown = window.pageY;`:
+   - Lấy vị trí hiện tại của trang khi cuộn, được gọi là `scrollDown`.
+
+4. `sections.forEach((current) => { ... });`:
+   - Sử dụng vòng lặp `forEach` để lặp qua từng phần tử `<section>`.
+
+5. `const sectionHeight = current.offsetHeight, 
+            sectionTop = current.offsetTop - 58, ...`:
+   - Lấy chiều cao (`sectionHeight`) và vị trí đỉnh (`sectionTop`) của mỗi phần tử `<section>`. Vị trí đỉnh được điều chỉnh bằng cách trừ đi 58 pixels (có thể để loại bỏ hiệu ứng khi cuộn).
+
+6. `const sectionId = current.getAttribute("id"), 
+            sectionClass = document.querySelector(".nav__menu a[href*=" + sectionId + "]");`:
+   - Lấy giá trị `id` của phần tử `<section>` và tìm phần tử menu tương ứng với `href` chứa giá trị `id` đó.
+
+7. `if (scrollDown > sectionTop && scrollY <= sectionTop + sectionHeight) { ... } else { ... }`:
+   - Kiểm tra nếu vị trí cuộn nằm giữa `sectionTop` và `sectionTop + sectionHeight` cho mỗi phần tử `<section>`.
+   - Nếu điều kiện đúng, thì thêm class "active-link" cho phần tử menu tương ứng, ngược lại loại bỏ class đó.
+
+8. `window.addEventListener('scroll', scrollActive);`:
+   - Gắn một sự kiện "scroll" lên cửa sổ (window) để gọi hàm `scrollActive` mỗi khi trang được cuộn. Điều này giúp cập nhật trạng thái của menu khi trang cuộn.
+
+
+
+
+
+
+
+
+
+
+const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light';
+const getCurrentIcon = () =>themeButton.body.classList.contains(iconTheme) ? "ri-moon-line" : "ri-sun-line"
+
+1. getCurrentTheme: hàm này sử dụng classList.contains 
+để kiểm tra xem phần tử document.body có chứa class darkTheme 
+(hoặc có thể là class khác được đặt tên theo biến darkTheme) hay không.
+Nếu có, nó trả về chuỗi "dark", ngược lại trả về "light".
+
+Tóm lại, hàm này xác định và trả về chủ đề hiện tại của giao diện, 
+dựa trên việc kiểm tra sự tồn tại của class darkTheme trên phần tử document.body.
+
+2. getCurrentIcon: Tương tự như getCurrentTheme, nhưng ở đây bạn sử dụng iconTheme thay vì darkTheme.
+Hàm này kiểm tra xem phần tử themeButton.body có chứa class iconTheme 
+(hoặc có thể là class khác được đặt tên theo biến iconTheme) hay không.
+Nếu có, nó trả về "ri-moon-line", ngược lại trả về "ri-sun-line".
+Tóm lại, hàm này xác định và trả về biểu tượng hiện tại tương ứng với chủ đề hiện tại của giao diện.
+*/
+
+
+
+themeButton.addEventListener('click', () => {
+    //Add or remove the dark / icon theme
+    document.body.classList.toggle(darkTheme)
+    themeButton.classList.toggle(iconTheme)
+
+    //We save the theme and the current icon that the user chose
+    localStorage.setItem('selected-theme', getCurrentTheme())
+    localStorage.setItem("selected-icon", getCurrentIcon());
+})
+
+//Giải thích đoạn code
+Đoạn mã này xử lý sự kiện click trên phần tử có id là themeButton. Dưới đây là giải thích chi tiết cho từng bước trong hàm xử lý sự kiện:
+
+1. document.body.classList.toggle(darkTheme):
+
+Dòng này sử dụng classList.toggle để thêm hoặc loại bỏ class darkTheme từ phần tử document.body. Nếu darkTheme đã tồn tại, nó sẽ bị loại bỏ, ngược lại sẽ được thêm vào. Điều này chuyển đổi giữa chủ đề tối (dark) và chủ đề sáng (light).
+
+2. themeButton.classList.toggle(iconTheme):
+
+Tương tự như trên, dòng này thêm hoặc loại bỏ class iconTheme từ phần tử có id là themeButton. Điều này chuyển đổi giữa biểu tượng mặt trời và mặt trăng trên nút theme.
+
+3. localStorage.setItem('selected-theme', getCurrentTheme()):
+
+Sử dụng localStorage.setItem để lưu trữ giá trị chủ đề hiện tại vào localStorage với key là 'selected-theme'. Giá trị này được xác định bằng cách gọi hàm getCurrentTheme().
+
+4. localStorage.setItem("selected-icon", getCurrentIcon()):
+
+Tương tự như trên, dòng này lưu trữ giá trị biểu tượng hiện tại vào localStorage với key là "selected-icon". Giá trị này được xác định bằng cách gọi hàm getCurrentIcon().
+Như vậy, khi người dùng click vào themeButton, chủ đề và biểu tượng sẽ được chuyển đổi, và giá trị của chúng sẽ được lưu trữ trong localStorage.
