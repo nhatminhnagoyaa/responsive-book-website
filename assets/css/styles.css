@@ -470,6 +470,7 @@ body.dark-theme {
 }
 
 .services__card i {
+  text-align: center;
   display: block;
   font-size: 3rem;
   color: var(--first-color);
